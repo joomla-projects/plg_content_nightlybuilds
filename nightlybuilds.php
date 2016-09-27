@@ -151,7 +151,7 @@ class PlgContentNightlyBuilds extends JPlugin
 			$html .= sprintf(
 					'<p>%s</p>',
 					JText::sprintf(
-						'PLG_CONTENT_NIGHTLYBUILDS_BUILD_UDATESERVER',
+						'PLG_CONTENT_NIGHTLYBUILDS_UDATESERVER',
 						JHtml::_('link', $updateserver, $updateserver, ['class' => 'alert-link'])
 					)
 				);
