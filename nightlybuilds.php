@@ -113,17 +113,17 @@ class PlgContentNightlyBuilds extends JPlugin
 				if ($branch == JVersion::RELEASE)
 				{
 					$linkedBranch = 'staging';
-					$updateserver = 'https://update.joomla.org/nightlies/next_patch_list.xml';
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_patch_list.xml';
 				}
 				elseif ($branch == '3.7')
 				{
 					$linkedBranch = '3.7.x';
-					$updateserver = 'https://update.joomla.org/nightlies/next_minor_list.xml';
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_minor_list.xml';
 				}
 				else
 				{
 					$linkedBranch = "$branch-dev";
-					$updateserver = 'https://update.joomla.org/nightlies/next_major_list.xml';
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_major_list.xml';
 				}
 			}
 
