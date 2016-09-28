@@ -100,6 +100,20 @@ class PlgContentNightlyBuilds extends JPlugin
 			$commitSha    = file_exists("$nightlyDir/$branch.txt") ? trim(file_get_contents("$nightlyDir/$branch.txt")) : false;
 			$linkedBranch = $commitSha;
 
+			// Set the updateserver per branch defaults to the next patch updateserver
+			switch ($branch)
+			{
+				case '3.7' :
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_minor_list.xml';
+					break;
+				case '4.0' :
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_major_list.xml';
+					break;
+				default :
+					$updateserver = 'https://update.joomla.org/core/nightlies/next_patch_list.xml';
+					break;
+			}
+
 			/*
 			 * Figure out our linked branch if the commit SHA doesn't exist.
 			 *
@@ -113,17 +127,14 @@ class PlgContentNightlyBuilds extends JPlugin
 				if ($branch == JVersion::RELEASE)
 				{
 					$linkedBranch = 'staging';
-					$updateserver = 'https://update.joomla.org/core/nightlies/next_patch_list.xml';
 				}
 				elseif ($branch == '3.7')
 				{
 					$linkedBranch = '3.7.x';
-					$updateserver = 'https://update.joomla.org/core/nightlies/next_minor_list.xml';
 				}
 				else
 				{
 					$linkedBranch = "$branch-dev";
-					$updateserver = 'https://update.joomla.org/core/nightlies/next_major_list.xml';
 				}
 			}
 
@@ -146,15 +157,16 @@ class PlgContentNightlyBuilds extends JPlugin
 			}
 
 			$html .= '</ul>';
-			$html .= '<p></p>';
 
+			// Display the Updateserver
+			$html .= '<p></p>';
 			$html .= sprintf(
-					'<p>%s</p>',
-					JText::sprintf(
-						'PLG_CONTENT_NIGHTLYBUILDS_UDATESERVER',
-						JHtml::_('link', $updateserver, $updateserver, ['class' => 'alert-link'])
-					)
-				);
+				'<p>%s</p>',
+				JText::sprintf(
+					'PLG_CONTENT_NIGHTLYBUILDS_UDATESERVER',
+					JHtml::_('link', $updateserver, $updateserver, ['class' => 'alert-link'])
+				)
+			);
 
 			$html .= JHtml::_('bootstrap.endSlide');
 		}
