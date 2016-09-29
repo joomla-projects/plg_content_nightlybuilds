@@ -100,13 +100,19 @@ class PlgContentNightlyBuilds extends JPlugin
 			$commitSha    = file_exists("$nightlyDir/$branch.txt") ? trim(file_get_contents("$nightlyDir/$branch.txt")) : false;
 			$linkedBranch = $commitSha;
 
+			$version = JVersion::RELEASE;
+			$pieces  = explode(".", $version);
+
+			$minor = $pieces[0] . "." . ($pieces[1] + 1);
+			$major = ($pieces[0] + 1) . "." . "0";
+
 			// Set the updateserver per branch defaults to the next patch updateserver
 			switch ($branch)
 			{
-				case '3.7' :
+				case $minor :
 					$updateserver = 'https://update.joomla.org/core/nightlies/next_minor_list.xml';
 					break;
-				case '4.0' :
+				case $major :
 					$updateserver = 'https://update.joomla.org/core/nightlies/next_major_list.xml';
 					break;
 				default :
