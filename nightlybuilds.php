@@ -104,7 +104,7 @@ class PlgContentNightlyBuilds extends JPlugin
 			$pieces  = explode(".", $version);
 
 			$minor = $pieces[0] . "." . ($pieces[1] + 1);
-			$major = ($pieces[0] + 1) . "." . "0";
+			$major = ($pieces[0] + 1) . ".0";
 
 			// Set the updateserver per branch defaults to the next patch updateserver
 			switch ($branch)
