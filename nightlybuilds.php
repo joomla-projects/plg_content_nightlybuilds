@@ -127,6 +127,7 @@ class PlgContentNightlyBuilds extends JPlugin
 			 * If $branch != JVersion::RELEASE then we're displaying "$branch-dev"
 			 *
 			 * And a special case for 3.7 because it's named differently, "3.7.x"
+			 * and a special case for 3.8 because it's named differently, "3.8.x"
 			 */
 			if (!$linkedBranch)
 			{
@@ -137,6 +138,10 @@ class PlgContentNightlyBuilds extends JPlugin
 				elseif ($branch == '3.7')
 				{
 					$linkedBranch = '3.7.x';
+				}
+				elseif ($branch == '3.8')
+				{
+					$linkedBranch = '3.8.x';
 				}
 				else
 				{
