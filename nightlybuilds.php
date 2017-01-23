@@ -138,6 +138,10 @@ class PlgContentNightlyBuilds extends JPlugin
 				{
 					$linkedBranch = '3.7.x';
 				}
+				elseif ($branch == '3.8')
+				{
+					$linkedBranch = '3.8.x';
+				}
 				else
 				{
 					$linkedBranch = "$branch-dev";
